@@ -1,0 +1,16 @@
+version: "2"
+services:
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000 
+      - PGID=1000 
+      - TZ=Europe/London
+      - SUBDOMAINS=jjgomez.duckdns.org
+      - TOKEN=24fe14fb-45f0-4701-8e09-32b82c2381d4
+      - LOG_FILE=false 
+    volumes:
+    volumes:
+      - /home/duckdns/:/config 
+    restart: unless-stopped
