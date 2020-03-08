@@ -38,7 +38,7 @@ services:
     command: transmission-daemon -f -g /config
     volumes:
       - /home/transmission:/config
-      - home/torrents:/downloads
+      - /home/torrents:/downloads
     ports:
       - 9091:9091
       - 51413:51413
