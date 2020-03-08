@@ -48,7 +48,8 @@ services:
     restart: unless-stopped#
 
   flexget:
-    build: flexget-arm
+#    build: flexget-arm
+    image: cpoppema/docker-flexget
     volumes:
       - ./flexget:/config
       - /home/torrents:/downloads
