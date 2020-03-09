@@ -1,5 +1,4 @@
 version: "2"
-
 services:
 
     samba:
@@ -9,22 +8,22 @@ services:
         stdin_open: true
         tty: true
         ports:
-        - 139:130
-        - 445:445
+            - 139:130
+            - 445:445
         volumes:
-        - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
-        - /media/pi/'Jorge G'/media:/media
-        - /media/pi/'Jorge G'/downloads:/downloads
+            - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
+            - /media/pi/'Jorge G'/media:/media
+            - /media/pi/'Jorge G'/downloads:/downloads
       
     plex:
         image: jaymoulin/plex:1.16.5
         expose:
-        - 32400
-        - 33400
+            - 32400
+            - 33400
         hostname: raspberrypi
         volumes:
-        - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
-        - /media/pi/'Jorge G'/media:/media
+            - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
+            - /media/pi/'Jorge G'/media:/media
         restart: unless-stopped
         network_mode: "host"
         
