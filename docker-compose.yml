@@ -13,8 +13,8 @@ services:
       - 445:445
     volumes:
       - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
-      - /media/'Jorge G'/media:/media
-      - /media/'Jorge G'/downloads:/downloads
+      - /media/pi/'Jorge G'/media:/media
+      - /media/pi/'Jorge G'/downloads:/downloads
       
   plex:
     image: jaymoulin/plex:1.16.5
@@ -24,7 +24,7 @@ services:
     hostname: raspberrypi
     volumes:
       - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
-      - /media/'Jorge G'/media:/media
+      - /media/pi/'Jorge G'/media:/media
     restart: unless-stopped
     network_mode: "host"
     
@@ -32,8 +32,8 @@ services:
   image : jaymoulin/transmission
   command: transmission-daemon -f -g /config
   volumes:
-    - /media/'Jorge G'/transmission:/config
-    - /media/'Jorge G'/torrents:/downloads
+    - /media/pi/'Jorge G'/transmission:/config
+    - /media/pi/'Jorge G'/torrents:/downloads
   ports:
     - 9091:9091
     - 51413:51413
