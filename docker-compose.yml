@@ -16,20 +16,6 @@ services:
       - /home/:/media
       - /home/torrents:/downloads
   
-  plex:
-    image: jaymoulin/plex:1.16.5
-    expose:
-      - 32400
-      - 33400
-    hostname: raspberrypi
-    volumes:
-      - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
-      - /Home/:/media
-      - /home/tmp:/tmp
-    restart: unless-stopped
-    networks: 
-      lan:
-        ipv4_address: 192.168.0.3
 
   transmission:
     image : jaymoulin/transmission
@@ -44,18 +30,3 @@ services:
     expose:
       - 9091
     restart: unless-stopped
-
-  flexget:
-    build: flexget-arm
-    volumes:
-      - ./flexget:/config
-      - /home/torrents:/downloads
-      - /Home/:/storage
-    ports:
-      - 5050:5050
-    environment:
-      - TORRENT_PLUGIN=transmission
-      - FG_WEBUI_PASSWD=123456
-    restart: unless-stopped
-    links:
-      - transmission
