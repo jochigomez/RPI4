@@ -2,42 +2,42 @@ version: "2"
 
 services:
 
-  samba:
-    image: dperson/samba:rpi
-    restart: always
-    command: '-u "pi;123456" -s "media;/media;yes;no" -s "downloads;/downloads;yes;no"'
-    stdin_open: true
-    tty: true
-    ports:
-      - 139:130
-      - 445:445
-    volumes:
-      - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
-      - /media/pi/'Jorge G'/media:/media
-      - /media/pi/'Jorge G'/downloads:/downloads
+    samba:
+        image: dperson/samba:rpi
+        restart: always
+        command: '-u "pi;123456" -s "media;/media;yes;no" -s "downloads;/downloads;yes;no"'
+        stdin_open: true
+        tty: true
+        ports:
+        - 139:130
+        - 445:445
+        volumes:
+        - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
+        - /media/pi/'Jorge G'/media:/media
+        - /media/pi/'Jorge G'/downloads:/downloads
       
-  plex:
-    image: jaymoulin/plex:1.16.5
-    expose:
-      - 32400
-      - 33400
-    hostname: raspberrypi
-    volumes:
-      - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
-      - /media/pi/'Jorge G'/media:/media
-    restart: unless-stopped
-    network_mode: "host"
-    
- transmission:
-  image : jaymoulin/transmission
-  command: transmission-daemon -f -g /config
-  volumes:
-    - /media/pi/'Jorge G'/transmission:/config
-    - /media/pi/'Jorge G'/torrents:/downloads
-  ports:
-    - 9091:9091
-    - 51413:51413
-    - 51413:51413/udp
-  expose:
-    - 9091
-  restart: unless-stopped #
+    plex:
+        image: jaymoulin/plex:1.16.5
+        expose:
+        - 32400
+        - 33400
+        hostname: raspberrypi
+        volumes:
+        - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
+        - /media/pi/'Jorge G'/media:/media
+        restart: unless-stopped
+        network_mode: "host"
+        
+    transmission:
+        image : jaymoulin/transmission
+        command: transmission-daemon -f -g /config
+        volumes:
+            - /media/pi/'Jorge G'/transmission:/config
+            - /media/pi/'Jorge G'/torrents:/downloads
+        ports:
+            - 9091:9091
+            - 51413:51413
+            - 51413:51413/udp
+        expose:
+            - 9091
+        restart: unless-stopped #
