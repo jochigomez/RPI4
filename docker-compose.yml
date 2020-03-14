@@ -14,9 +14,7 @@ services:
             - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
             - /media/pi/Jorge G/RPI/media:/media
             - /media/pi/Jorge G/RPI/downloads:/downloads
-networks: 
-           lan:
-               ipv4_address: 192.168.0.5
+
       
     plex:
         image: jaymoulin/plex:1.16.5
@@ -28,10 +26,8 @@ networks:
             - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
             - /media/pi/Jorge G/RPI/media:/media
         restart: unless-stopped
-        #network_mode: "host"
-        networks: 
-           lan:
-               ipv4_address: 192.168.0.3
+        network_mode: "host"
+        
         
     transmission:
         image : jaymoulin/transmission
@@ -46,7 +42,4 @@ networks:
         expose:
             - 9091
         restart: unless-stopped
-networks: 
-           lan:
-               ipv4_address: 192.168.0.4
-
+        network_mode: "host"
