@@ -40,3 +40,14 @@ services:
         expose:
             - 9091
         restart: unless-stopped
+
+networks:
+  lan:
+    driver: macvlan
+    driver_opts:
+      parent: wlan0
+    ipam:
+      config:
+        - subnet: "192.168.0.0/24"       
+          gateway: "192.168.0.1"
+
