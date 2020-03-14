@@ -14,6 +14,7 @@ services:
             - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
             - /media/pi/Jorge G/RPI/media:/media
             - /media/pi/Jorge G/RPI/downloads:/downloads
+            - /media/pi/Jorge G/:/disco
         network_mode: "host"
       
     plex:
