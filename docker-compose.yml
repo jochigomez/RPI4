@@ -14,6 +14,9 @@ services:
             - /usr/share/zoneinfo/America/Argentina/Mendoza:/etc/localtime
             - /media/pi/Jorge G/RPI/media:/media
             - /media/pi/Jorge G/RPI/downloads:/downloads
+networks: 
+           lan:
+               ipv4_address: 192.168.0.5
       
     plex:
         image: jaymoulin/plex:1.16.5
@@ -43,14 +46,7 @@ services:
         expose:
             - 9091
         restart: unless-stopped
-
-networks:
-  lan:
-    driver: macvlan
-    driver_opts:
-      parent: eth0
-    ipam:
-      config:
-        - subnet: "192.168.0.0/24"       
-          gateway: "192.168.0.1"
+networks: 
+           lan:
+               ipv4_address: 192.168.0.4
 
