@@ -15,7 +15,11 @@ services:
             - /media/pi/Jorge G/RPI/media:/media
             - /media/pi/Jorge G/RPI/downloads:/downloads
             - /media/pi/Jorge G/:/disco
-        network_mode: "host"
+       # network_mode: "host"
+       networks: 
+      lan:
+        ipv4_address: 192.168.0.3
+
       
     plex:
         image: jaymoulin/plex:1.16.5
@@ -27,8 +31,12 @@ services:
             - /home/Plex Media Server:/root/Library/Application Support/Plex Media Server
             - /media/pi/Jorge G/RPI/media:/media
         restart: unless-stopped
-        network_mode: "host"
-        
+       # network_mode: "host"
+        networks: 
+      lan:
+        ipv4_address: 192.168.0.4
+
+
         
     transmission:
         image : jaymoulin/transmission
@@ -43,4 +51,9 @@ services:
         expose:
             - 9091
         restart: unless-stopped
-        network_mode: "host"
+    #    network_mode: "host"
+networks: 
+      lan:
+        ipv4_address: 192.168.0.5
+
+
